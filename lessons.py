@@ -8,8 +8,11 @@ from dotenv import load_dotenv
 
 dotenv_path = '/Users/germany/Desktop/mess/bot/spain_lang_bot/pythonProject/spanish_bot/.env'
 
-load_dotenv(dotenv_path)
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# Если переменные окружения не заданы (например, на локальном компьютере), загружаем из .env
+if os.getenv("RAILWAY_ENVIRONMENT") is None:  # Проверяем, что приложение не запущено на Railway
+    load_dotenv(dotenv_path=dotenv_path)
+
+openai.api_key = os.getenv("openai.api_key")
 
 # Токен бота
 async def generate_lesson_content(prompt):
