@@ -2,10 +2,10 @@
 FROM python:3.11
 
 # Устанавливаем рабочую директорию в контейнере
-WORKDIR /app
+WORKDIR /handlers.py
 
 # Копируем все файлы проекта в контейнер
-COPY . /app
+COPY . /handlers.py
 
 # Устанавливаем зависимости
 RUN pip install --no-cache-dir -r requirements.txt
