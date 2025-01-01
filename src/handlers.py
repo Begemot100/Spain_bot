@@ -11,7 +11,7 @@ from quiz_handler import *
 from word_generator import generate_words_for_topic
 from hashlib import sha256
 from datetime import datetime, timedelta
-
+import psycopg2
 import openai
 from telegram import Update, ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, CallbackQueryHandler, CallbackContext
