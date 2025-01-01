@@ -27,10 +27,10 @@ dotenv_path = '/Users/germany/Desktop/mess/bot/spain_lang_bot/pythonProject/span
 load_dotenv(dotenv_path)
 # Токен бота
 
-TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-openai.api_key = os.getenv("OPENAI_API_KEY")
+TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
+OPENAI_TOKEN = os.getenv('OPENAI_TOKEN')
 
-if not TOKEN or not openai.api_key:
+if not TELEGRAM_TOKEN or not OPENAI_TOKEN:
     raise ValueError("Токены Telegram или OpenAI не загружены. Проверьте файл .env.")
 
 # Обработчик команды /start
@@ -442,7 +442,7 @@ async def register_user(update: Update, context: CallbackContext):
 
 # Основная функция
 def main():
-    application = Application.builder().token(TOKEN).build()
+    application = Application.builder().token(TELEGRAM_TOKEN).build()
 
     # Обработчики команд
     application.add_handler(CommandHandler("start", start))
