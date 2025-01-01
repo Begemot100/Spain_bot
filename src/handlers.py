@@ -32,6 +32,7 @@ load_dotenv(dotenv_path=dotenv_path)
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 DATABASE_URL = os.getenv("DATABASE_URL")
+engine = create_engine(DATABASE_URL)
 
 # Убедимся, что переменные загружены
 if not TELEGRAM_TOKEN or not OPENAI_API_KEY or not DATABASE_URL:
