@@ -1,0 +1,11 @@
+ Исключение виртуального окружения
+*.pyc
+__pycache__/
+.vscode/
+.env
+*.sqlite3
+*.db
+*.log
+*.idea
+*.DS_Store
+*.venv/
