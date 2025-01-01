@@ -1,6 +1,9 @@
 import sys
 import sys
 import os
+
+from sqlalchemy import create_engine
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from telegram.ext import Application, CommandHandler, CallbackContext
 from dictionary_module import *
@@ -27,6 +30,8 @@ from dotenv import load_dotenv
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 DATABASE_URL = os.getenv("DATABASE_URL")
+
+engine = create_engine(DATABASE_URL)
 
 # Устанавливаем ключ OpenAI
 openai_api_key = OPENAI_API_KEY
