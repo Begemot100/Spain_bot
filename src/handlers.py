@@ -22,15 +22,16 @@ from quiz_module import next_word_handler, quiz_answer_handler
 import subprocess
 from dotenv import load_dotenv
 
+os.getenv()
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+openai.api_key = os.getenv("openai.api_key")
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Устанавливаем ключ OpenAI
-openai.api_key = OPENAI_API_KEY
+openai.api_key = openai.api_key
 
 # Проверяем, что все переменные загружены
-if not TELEGRAM_TOKEN or not OPENAI_API_KEY or not DATABASE_URL:
+if not TELEGRAM_TOKEN or not openai.api_key or not DATABASE_URL:
     raise ValueError("Одна или несколько переменных окружения не загружены. Проверьте настройки Railway.")
 
 print("Переменные окружения загружены успешно.")

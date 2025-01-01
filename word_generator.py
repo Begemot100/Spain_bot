@@ -3,11 +3,18 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 import asyncio
 import os
 from dotenv import load_dotenv
-dotenv_path = '/Users/germany/Desktop/mess/bot/spain_lang_bot/pythonProject/spanish_bot/.env'
-load_dotenv(dotenv_path)
 
-# Установите ваш API-ключ
-openai.api_key = os.getenv("OPENAI_API_KEY")
+os.getenv()
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+openai.api_key = os.getenv("openai.api_key")
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+# Устанавливаем ключ OpenAI
+openai.api_key = openai.api_key
+
+# Проверяем, что все переменные загружены
+if not TELEGRAM_TOKEN or not openai.api_key or not DATABASE_URL:
+    raise ValueError("Одна или несколько переменных окружения не загружены. Проверьте настройки Railway.")
 
 
 async def generate_words_for_topic(topic):
