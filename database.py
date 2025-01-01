@@ -46,8 +46,8 @@ class Word(Base):
 
 # Настройка базы данных
 DATABASE_URL = "sqlite:///bot.db"  # SQLite база данных в текущей папке
-engine = create_engine("sqlite:////Users/germany/Desktop/mess/bot/spain_lang_bot/pythonProject/bot.db")
-print(engine.url)
+engine = create_engine(DATABASE_URL)
+
 
 # Создание всех таблиц
 Base.metadata.create_all(engine)
