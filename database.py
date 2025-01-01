@@ -1,5 +1,3 @@
-import os
-
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, create_engine
 from sqlalchemy.orm import relationship, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
@@ -47,12 +45,12 @@ class Word(Base):
     usage_example = Column(String, nullable=True)  # Пример использования слова
 
 # Настройка базы данных
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = "sqlite:///Users/germany/Desktop/mess/bot/spain_lang_bot/pythonProject/bot.db"  # SQLite база данных в текущей папке
 engine = create_engine(DATABASE_URL)
 
 
 # Создание всех таблиц
-Base.metadata.create_all(engine)
+# Base.metadata.create_all(engine)
 
 # Создание сессии для взаимодействия с базой данных
 Session = sessionmaker(bind=engine)

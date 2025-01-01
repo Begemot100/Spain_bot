@@ -28,9 +28,9 @@ load_dotenv(dotenv_path)
 # Токен бота
 
 TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
-OPENAI_TOKEN = os.getenv('OPENAI_TOKEN')
+openai.api_key = os.getenv('openai.api_key')
 
-if not TELEGRAM_TOKEN or not OPENAI_TOKEN:
+if not TELEGRAM_TOKEN or not openai.api_key:
     raise ValueError("Токены Telegram или OpenAI не загружены. Проверьте файл .env.")
 
 # Обработчик команды /start
