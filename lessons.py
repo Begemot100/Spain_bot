@@ -5,19 +5,21 @@ import openai
 from typing import Callable
 
 from dotenv import load_dotenv
-os.getenv()
+dotenv_path = "/Users/germany/Desktop/mess/bot/spain_lang_bot/pythonProject/spanish_bot/.env"
+load_dotenv(dotenv_path=dotenv_path)
+
+# Получаем переменные окружения
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-# Устанавливаем ключ OpenAI
-openai_api_key = OPENAI_API_KEY
-
-# Проверяем, что все переменные загружены
+# Убедимся, что переменные загружены
 if not TELEGRAM_TOKEN or not OPENAI_API_KEY or not DATABASE_URL:
-    raise ValueError("Одна или несколько переменных окружения не загружены. Проверьте настройки Railway.")
+    raise ValueError("Одна или несколько переменных окружения не загружены. Проверьте файл .env.")
 
-print("Переменные окружения загружены успешно.")
+print("TELEGRAM_TOKEN:", TELEGRAM_TOKEN)
+print("OPENAI_API_KEY:", OPENAI_API_KEY)
+print("DATABASE_URL:", DATABASE_URL)
 
 # Токен бота
 async def generate_lesson_content(prompt):

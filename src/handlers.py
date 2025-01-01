@@ -24,23 +24,22 @@ from quiz_module import next_word_handler, quiz_answer_handler
 # from word_generator import generate_words_for_topic
 import subprocess
 from dotenv import load_dotenv
-# load_dotenv()
+
+dotenv_path = "/Users/germany/Desktop/mess/bot/spain_lang_bot/pythonProject/spanish_bot/.env"
+load_dotenv(dotenv_path=dotenv_path)
 
 # Получаем переменные окружения
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-engine = create_engine(DATABASE_URL)
-
-# Устанавливаем ключ OpenAI
-openai_api_key = OPENAI_API_KEY
-
-# Проверяем, что все переменные загружены
+# Убедимся, что переменные загружены
 if not TELEGRAM_TOKEN or not OPENAI_API_KEY or not DATABASE_URL:
-    raise ValueError("Одна или несколько переменных окружения не загружены. Проверьте настройки Railway или .env файл.")
+    raise ValueError("Одна или несколько переменных окружения не загружены. Проверьте файл .env.")
 
-print("Все переменные окружения успешно загружены!")
+print("TELEGRAM_TOKEN:", TELEGRAM_TOKEN)
+print("OPENAI_API_KEY:", OPENAI_API_KEY)
+print("DATABASE_URL:", DATABASE_URL)
 
 print("Переменные окружения загружены успешно.")
 
