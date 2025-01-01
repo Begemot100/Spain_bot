@@ -38,6 +38,12 @@ engine = create_engine(DATABASE_URL)
 if not TELEGRAM_TOKEN or not OPENAI_API_KEY or not DATABASE_URL:
     raise ValueError("Одна или несколько переменных окружения не загружены. Проверьте файл .env.")
 
+
+print("Переменные окружения на Railway:")
+for key, value in os.environ.items():
+    print(f"{key}: {value}")
+
+    
 print("TELEGRAM_TOKEN:", TELEGRAM_TOKEN)
 print("OPENAI_API_KEY:", OPENAI_API_KEY)
 print("DATABASE_URL:", DATABASE_URL)
