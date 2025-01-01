@@ -24,8 +24,10 @@ from dotenv import load_dotenv
 
 dotenv_path = '/Users/germany/Desktop/mess/bot/spain_lang_bot/pythonProject/spanish_bot/.env'
 
-load_dotenv(dotenv_path)
-# Токен бота
+# Если переменные окружения не заданы (например, на локальном компьютере), загружаем из .env
+if os.getenv("RAILWAY_ENVIRONMENT") is None:  # Проверяем, что приложение не запущено на Railway
+    load_dotenv(dotenv_path=dotenv_path)
+
 
 TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 openai.api_key = os.getenv('openai.api_key')
