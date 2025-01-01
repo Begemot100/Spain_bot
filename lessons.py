@@ -6,13 +6,18 @@ from typing import Callable
 
 from dotenv import load_dotenv
 
-dotenv_path = '/Users/germany/Desktop/mess/bot/spain_lang_bot/pythonProject/spanish_bot/.env'
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-# Если переменные окружения не заданы (например, на локальном компьютере), загружаем из .env
-if os.getenv("RAILWAY_ENVIRONMENT") is None:  # Проверяем, что приложение не запущено на Railway
-    load_dotenv(dotenv_path=dotenv_path)
+# Устанавливаем ключ OpenAI
+openai.api_key = OPENAI_API_KEY
 
-openai.api_key = os.getenv("openai.api_key")
+# Проверяем, что все переменные загружены
+if not TELEGRAM_TOKEN or not OPENAI_API_KEY or not DATABASE_URL:
+    raise ValueError("Одна или несколько переменных окружения не загружены. Проверьте настройки Railway.")
+
+print("Переменные окружения загружены успешно.")
 
 # Токен бота
 async def generate_lesson_content(prompt):

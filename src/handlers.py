@@ -22,18 +22,18 @@ from quiz_module import next_word_handler, quiz_answer_handler
 import subprocess
 from dotenv import load_dotenv
 
-dotenv_path = '/Users/germany/Desktop/mess/bot/spain_lang_bot/pythonProject/spanish_bot/.env'
+TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
-# Если переменные окружения не заданы (например, на локальном компьютере), загружаем из .env
-if os.getenv("RAILWAY_ENVIRONMENT") is None:  # Проверяем, что приложение не запущено на Railway
-    load_dotenv(dotenv_path=dotenv_path)
+# Устанавливаем ключ OpenAI
+openai.api_key = OPENAI_API_KEY
 
+# Проверяем, что все переменные загружены
+if not TELEGRAM_TOKEN or not OPENAI_API_KEY or not DATABASE_URL:
+    raise ValueError("Одна или несколько переменных окружения не загружены. Проверьте настройки Railway.")
 
-TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
-openai.api_key = os.getenv('openai.api_key')
-
-if not TELEGRAM_TOKEN or not openai.api_key:
-    raise ValueError("Токены Telegram или OpenAI не загружены. Проверьте файл .env.")
+print("Переменные окружения загружены успешно.")
 
 # Обработчик команды /start
 async def start(update: Update, context: CallbackContext):
