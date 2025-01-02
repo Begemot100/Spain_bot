@@ -4,7 +4,6 @@ try:
     conn = psycopg2.connect(
         dbname="railway",
         user="postgres",
-        password="SHHgqKYlcgrgCsmptYWzhMNhgoKhyZtU",
         host="roundhouse.proxy.rlwy.net",
         port="42541"
     )
